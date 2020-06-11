@@ -8,10 +8,7 @@ from . import routes
 #Iba hacer un login pero no iba a perder tiempo en esto. que no estaba pedido
 @routes.route('/')
 def home():
-    if not session.get('logged_in'):
-        return render_template('main.html')
-    else:
-        return render_template('main.html')
+    return render_template('main.html')
 
 #endpoint mutant , donde verifica que exista el patron de letras y recien ahi verifica el adn
 @routes.route("/mutant/", methods=["POST"])
