@@ -4,7 +4,7 @@ from flask import json
 
 from models import Adn, db
 
-
+#se comprueba el atron de letras
 def verificar(str):
     pattern = '^[ACGT]*$'
     flag = False
@@ -15,7 +15,8 @@ def verificar(str):
             return False
     return flag
 
-
+#En las siguientes funciones comprobamos lo pedido en el ejercicio , esta me parecio la mejor forma iteratiba por que es mas perfeormante.
+# tambien se puede trasnformar la matrix perorequiere mas memoria.
 def vertical(matrix):
     result = 0
     for i, row in enumerate(matrix):
@@ -67,7 +68,7 @@ def diagOne(matrix):
                 pass
     return result
 
-
+# ordeno de forma que descarte la matrix siendo mutante lo mas rapido posible
 def isMutant(matrix):
     result = horizontal(matrix)
     if horizontal(matrix) < 2:

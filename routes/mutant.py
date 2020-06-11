@@ -4,7 +4,8 @@ from functions.mutant import verificar, horizontal, vertical, diagOne, diagonal,
 from models import Adn
 from . import routes
 
-
+#este es el endpoint donde hay una landing mas linda para que no quede tan vacio
+#Iba hacer un login pero no iba a perder tiempo en esto. que no estaba pedido
 @routes.route('/')
 def home():
     if not session.get('logged_in'):
@@ -12,6 +13,7 @@ def home():
     else:
         return render_template('main.html')
 
+#endpoint mutant , donde verifica que exista el patron de letras y recien ahi verifica el adn
 @routes.route("/mutant/", methods=["POST"])
 def ismutant():
     if request.is_json:
@@ -25,7 +27,7 @@ def ismutant():
             return abort(403, description="PATTERN WRONG")
     return abort(403, description="JSON ERROR")
 
-
+#endpoint de las estadisticas primero toma lo dos datos desde la db y lugo calcula el ratio , si el divisor es 0 se le asig el valor de no data
 @routes.route("/stats/", methods=["POST"])
 def stats():
     mutants = Adn.query.filter_by(type_id=1).count()
